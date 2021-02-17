@@ -95,7 +95,7 @@ class TabuleiroActivity : AppCompatActivity() {
                         }
                     }
                     //move peça atual
-                    if (o.pt3.x == LINHA - 1 && o.pt4.x == LINHA - 1 && o.pt1.x == LINHA - 2 && o.pt2.x == LINHA - 2) {
+                    if (o.pt3.x == LINHA - 1 && o.pt4.x == LINHA - 1 && o.pt1.x == LINHA - 2 && o.pt2.x == LINHA - 2 ) {
                         boardView[o.pt1.x][o.pt1.y]!!.setImageResource(R.drawable.white)
                         boardView[o.pt2.x][o.pt2.y]!!.setImageResource(R.drawable.white)
                         boardView[o.pt3.x][o.pt3.y]!!.setImageResource(R.drawable.white)
@@ -106,9 +106,22 @@ class TabuleiroActivity : AppCompatActivity() {
                         board[o.pt3.x][o.pt3.y] = 1
                         board[o.pt4.x][o.pt4.y] = 1
 
+
                         o = O(0 ,15)
 //                        novapeca()
-                    } else {
+                    } else if (board[o.pt1.x+1][o.pt1.y] == 1 || board[o.pt2.x+1][o.pt2.y] == 1 || board[o.pt3.x+1][o.pt3.y] == 1 || board[o.pt4.x+1][o.pt4.y] == 1) {
+
+                        boardView[o.pt1.x][o.pt1.y]!!.setImageResource(R.drawable.white)
+                        boardView[o.pt2.x][o.pt2.y]!!.setImageResource(R.drawable.white)
+                        boardView[o.pt3.x][o.pt3.y]!!.setImageResource(R.drawable.white)
+                        boardView[o.pt4.x][o.pt4.y]!!.setImageResource(R.drawable.white)
+
+                        board[o.pt1.x][o.pt1.y] = 1
+                        board[o.pt2.x][o.pt2.y] = 1
+                        board[o.pt3.x][o.pt3.y] = 1
+                        board[o.pt4.x][o.pt4.y] = 1
+                        o = O(0 ,15)
+                    }else{
                         o.moveDown()
                     }
 
