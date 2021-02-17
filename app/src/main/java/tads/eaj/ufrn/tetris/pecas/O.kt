@@ -8,7 +8,6 @@ class O (x:Int, y:Int): Peca(x, y) {
     override var pt4 = Ponto(x + 1, y +1)
 
     override fun moveDown(){
-
         pt1.moveDown()
         pt2.moveDown()
         pt3.moveDown()
