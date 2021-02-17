@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import tads.eaj.ufrn.tetris.databinding.ActivityMainBinding
 import tads.eaj.ufrn.tetris.databinding.ActivityTabuleiroBinding
+import tads.eaj.ufrn.tetris.pecas.O
 
 class TabuleiroActivity : AppCompatActivity() {
     val LINHA = 40
@@ -16,21 +17,7 @@ class TabuleiroActivity : AppCompatActivity() {
     var running = true
     var speed:Long = 300
 
-    var q = Ponto(0, 15)
-
-    inner class Ponto(var x:Int,var y:Int){
-        fun moveDown(){
-            x++
-        }
-
-        fun moveLeft(){
-            y--
-        }
-        fun moveRight(){
-            y++
-        }
-
-    }
+    var o = O(0, 15)
 
     var board = Array(LINHA) {
         Array(COLUNA){0}
@@ -61,16 +48,16 @@ class TabuleiroActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_tabuleiro)
 
         binding.left.setOnClickListener{
-           if(q.y == 0){
+           if(o.pt1.y == 0){
                return@setOnClickListener
            }
-            q.moveLeft()
+            o.moveLeft()
         }
         binding.right.setOnClickListener{
-            if(q.y >= COLUNA-1){
+            if(o.pt2.y >= COLUNA-1){
                 return@setOnClickListener
             }
-            q.moveRight()
+            o.moveRight()
         }
 
         binding.gridboard.rowCount = LINHA
@@ -100,11 +87,15 @@ class TabuleiroActivity : AppCompatActivity() {
                         }
                     }
                     //move peça atual
-                    q.moveDown()
+
+                    o.moveDown()
                     //print peça
 
                     try {
-                        boardView[q.x][q.y]!!.setImageResource(R.drawable.white)
+                        boardView[o.pt1.x][o.pt1.y]!!.setImageResource(R.drawable.white)
+                        boardView[o.pt2.x][o.pt2.y]!!.setImageResource(R.drawable.white)
+                        boardView[o.pt3.x][o.pt3.y]!!.setImageResource(R.drawable.white)
+                        boardView[o.pt4.x][o.pt4.y]!!.setImageResource(R.drawable.white)
 
                     }catch (e:ArrayIndexOutOfBoundsException ) {
                         //se a peça passou das bordas eu vou parar o jogo
