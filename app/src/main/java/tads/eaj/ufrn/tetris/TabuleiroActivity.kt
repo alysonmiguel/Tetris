@@ -1,5 +1,6 @@
 package tads.eaj.ufrn.tetris
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +10,8 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import tads.eaj.ufrn.tetris.databinding.ActivityMainBinding
 import tads.eaj.ufrn.tetris.databinding.ActivityTabuleiroBinding
-import tads.eaj.ufrn.tetris.pecas.O
+import tads.eaj.ufrn.tetris.pecas.*
+import kotlin.random.Random
 
 class TabuleiroActivity : AppCompatActivity() {
     val LINHA = 40
@@ -17,7 +19,11 @@ class TabuleiroActivity : AppCompatActivity() {
     var running = true
     var speed: Long = 300
 
-    var o = O(0, 15)
+    var random = Random
+
+
+    //    var i = I(0, 15)
+    var  o = gerarPeca(2)
 
     var board = Array(LINHA) {
         Array(COLUNA) { 0 }
@@ -41,7 +47,7 @@ class TabuleiroActivity : AppCompatActivity() {
         } else if (dificuldade == 2) {
             Toast.makeText(this, "Normal", Toast.LENGTH_SHORT).show()
         } else {
-            speed = 150
+            speed = 20
             Toast.makeText(this, "Dificil", Toast.LENGTH_SHORT).show()
         }
 
@@ -87,6 +93,11 @@ class TabuleiroActivity : AppCompatActivity() {
                     //limpa tela
                     for (i in 0 until LINHA) {
                         for (j in 0 until COLUNA) {
+                            if(board[0][j] == 1){
+                                // olha amanha
+//                                var intent = Intent(applicationContext, R.layout.activity_game_over::class.java)
+//                                startActivity(intent)
+                            }
                             if (board[i][j] == 1) {
                                 boardView[i][j]!!.setImageResource(R.drawable.white)
                             } else {
@@ -95,7 +106,7 @@ class TabuleiroActivity : AppCompatActivity() {
                         }
                     }
                     //move peça atual
-                    if (o.pt3.x == LINHA - 1 && o.pt4.x == LINHA - 1 && o.pt1.x == LINHA - 2 && o.pt2.x == LINHA - 2 ) {
+                    if (o.pt3.x == LINHA - 1 || o.pt4.x == LINHA - 1 || o.pt1.x == LINHA - 1 || o.pt2.x == LINHA - 1 ) {
                         boardView[o.pt1.x][o.pt1.y]!!.setImageResource(R.drawable.white)
                         boardView[o.pt2.x][o.pt2.y]!!.setImageResource(R.drawable.white)
                         boardView[o.pt3.x][o.pt3.y]!!.setImageResource(R.drawable.white)
@@ -106,8 +117,12 @@ class TabuleiroActivity : AppCompatActivity() {
                         board[o.pt3.x][o.pt3.y] = 1
                         board[o.pt4.x][o.pt4.y] = 1
 
+                        var p = (0..3).random()
 
-                        o = O(0 ,15)
+                        o = gerarPeca(p)
+
+//                        i = I(0,15)
+
 //                        novapeca()
                     } else if (board[o.pt1.x+1][o.pt1.y] == 1 || board[o.pt2.x+1][o.pt2.y] == 1 || board[o.pt3.x+1][o.pt3.y] == 1 || board[o.pt4.x+1][o.pt4.y] == 1) {
 
@@ -120,7 +135,12 @@ class TabuleiroActivity : AppCompatActivity() {
                         board[o.pt2.x][o.pt2.y] = 1
                         board[o.pt3.x][o.pt3.y] = 1
                         board[o.pt4.x][o.pt4.y] = 1
-                        o = O(0 ,15)
+//                        o = O(0 ,15)
+
+                        var p = (0..3).random()
+
+                        o = gerarPeca(p)
+
                     }else{
                         o.moveDown()
                     }
@@ -134,11 +154,28 @@ class TabuleiroActivity : AppCompatActivity() {
 
                     } catch (e: ArrayIndexOutOfBoundsException) {
                         //se a peça passou das bordas eu vou parar o jogo
-                        Toast.makeText(applicationContext, "saiu", Toast.LENGTH_SHORT).show()
+                        //Toast.makeText(applicationContext, "saiu", Toast.LENGTH_SHORT).show()
                         running = false
                     }
                 }
             }
         }.start()
     }
+
+
+    fun gerarPeca(novaPeca:Int): Peca {
+
+        if(novaPeca == 0){
+            return O(0 ,15)
+        }else if( novaPeca == 1){
+            return I (0 ,15)
+        }else if( novaPeca == 2){
+            return L(0 ,15)
+        }else if( novaPeca == 3){
+            return S(0 ,15)
+        }
+        return  L(0,15)
+
+    }
+
 }
