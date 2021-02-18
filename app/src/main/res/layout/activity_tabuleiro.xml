@@ -14,7 +14,8 @@
         <GridLayout
             android:id="@+id/gridboard"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -26,14 +27,21 @@
                     android:id="@+id/left"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="left">
+                    android:text="Esquerda">
 
                 </Button>
                 <Button
                     android:id="@+id/right"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="right">
+                    android:text="Direita">
+
+                </Button>
+                <Button
+                    android:id="@+id/girar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Girar">
 
                 </Button>
 

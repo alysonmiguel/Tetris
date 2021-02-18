@@ -29,7 +29,6 @@ abstract class Peca(var x:Int, var y:Int){
     }
 
     open fun gira(){
-
     }
 
 }
