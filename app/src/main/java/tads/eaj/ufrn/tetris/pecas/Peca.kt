@@ -20,7 +20,6 @@ abstract class Peca(var x:Int, var y:Int){
         pt3.moveLeft()
         pt4.moveLeft()
     }
-
     open fun moveRight(){
         pt1.moveRight()
         pt2.moveRight()

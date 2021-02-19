@@ -27,21 +27,21 @@
                     android:id="@+id/left"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Esquerda">
+                    android:text="@string/esquerda">
 
                 </Button>
                 <Button
                     android:id="@+id/right"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Direita">
+                    android:text="@string/direita">
 
                 </Button>
                 <Button
                     android:id="@+id/girar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Girar">
+                    android:text="@string/girar">
 
                 </Button>
 

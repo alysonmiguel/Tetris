@@ -14,14 +14,11 @@ import tads.eaj.ufrn.tetris.pecas.*
 import kotlin.random.Random
 
 class TabuleiroActivity : AppCompatActivity() {
-    val LINHA = 40
+    val LINHA = 30
     val COLUNA = 12
     var running = true
     var speed: Long = 300
 
-//    var random = Random
-
-    //    var i = I(0, 15)
     var peca  = gerarPeca((0..3).random())
 
     var board = Array(LINHA) {
@@ -109,13 +106,8 @@ class TabuleiroActivity : AppCompatActivity() {
                     }
                     //move peça atual
                     if (peca.pt3.x == LINHA - 1 || peca.pt4.x == LINHA - 1 || peca.pt1.x == LINHA - 1 || peca.pt2.x == LINHA - 1 ) {
-
                         desenhar()
-
-                        board[peca.pt1.x][peca.pt1.y] = 1
-                        board[peca.pt2.x][peca.pt2.y] = 1
-                        board[peca.pt3.x][peca.pt3.y] = 1
-                        board[peca.pt4.x][peca.pt4.y] = 1
+                        preencheArray()
 
                         var p = (0..3).random()
                         Toast.makeText(this, "${p}", Toast.LENGTH_SHORT).show()
@@ -123,18 +115,10 @@ class TabuleiroActivity : AppCompatActivity() {
                         peca = gerarPeca(p)
 
                     } else if (board[peca.pt1.x+1][peca.pt1.y] == 1 || board[peca.pt2.x+1][peca.pt2.y] == 1 || board[peca.pt3.x+1][peca.pt3.y] == 1 || board[peca.pt4.x+1][peca.pt4.y] == 1) {
-
                         desenhar()
-
-                        board[peca.pt1.x][peca.pt1.y] = 1
-                        board[peca.pt2.x][peca.pt2.y] = 1
-                        board[peca.pt3.x][peca.pt3.y] = 1
-                        board[peca.pt4.x][peca.pt4.y] = 1
+                        preencheArray()
 //                        peca= O(0 ,15)
-
                         var p = (0..3).random()
-
-                        Toast.makeText(this, "${p}", Toast.LENGTH_SHORT).show()
 
                         peca = gerarPeca(p)
 
@@ -162,32 +146,39 @@ class TabuleiroActivity : AppCompatActivity() {
         boardView[peca.pt4.x][peca.pt4.y]!!.setImageResource(R.drawable.white)
     }
 
+    fun preencheArray(){
+        board[peca.pt1.x][peca.pt1.y] = 1
+        board[peca.pt2.x][peca.pt2.y] = 1
+        board[peca.pt3.x][peca.pt3.y] = 1
+        board[peca.pt4.x][peca.pt4.y] = 1
+    }
+
     fun gerarPeca(novaPeca:Int): Peca {
 
-//        if(novaPeca == 0){
-//            return O(0 ,8)
-//        }else if( novaPeca == 1){
-//            return I (0 ,8)
-//        }else if( novaPeca == 2){
-//            return L(0 ,8)
-//        }else if( novaPeca == 3){
-//            return S(0 ,8)
-//        }
-//        return  L(0,8)
-
-//    }
-
-
-        if (novaPeca == 0) {
-            return L(0, 8)
-        } else if (novaPeca == 1) {
-            return L(0, 8)
-        } else if (novaPeca == 2) {
-            return L(0, 8)
-        } else if (novaPeca == 3) {
-            return L(0, 8)
+        if(novaPeca == 0){
+            return O(0 ,8)
+        }else if( novaPeca == 1){
+            return I (0 ,8)
+        }else if( novaPeca == 2){
+            return L(0 ,8)
+        }else if( novaPeca == 3){
+            return S(0 ,8)
         }
-        return L(0, 8)
+        return  L(0,8)
+
     }
+
+//
+//        if (novaPeca == 0) {
+//            return L(0, 8)
+//        } else if (novaPeca == 1) {
+//            return L(0, 8)
+//        } else if (novaPeca == 2) {
+//            return L(0, 8)
+//        } else if (novaPeca == 3) {
+//            return L(0, 8)
+//        }
+//        return L(0, 8)
+//    }
 
 }
