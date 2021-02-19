@@ -22,7 +22,7 @@ class L (x:Int, y:Int): Peca(x, y) {
     }
 
     private var quantidade:Int = 1     //  1
-    override fun gira() {      //  3
+    override fun girar() {      //  3
         if (quantidade == 1){  //  2  4
             pt1.x = pt3.x-1
             pt1.y = pt3.y

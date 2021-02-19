@@ -11,6 +11,7 @@
         tools:context=".MainActivity"
         android:orientation="vertical">
 
+
         <GridLayout
             android:id="@+id/gridboard"
             android:layout_width="wrap_content"

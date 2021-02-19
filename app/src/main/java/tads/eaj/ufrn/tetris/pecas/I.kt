@@ -7,7 +7,7 @@ class I (x:Int, y:Int): Peca(x, y) {
     override var pt3 = Ponto(x, y - 1)
     override var pt4 = Ponto(x, y)
 
-    override fun gira() {
-        super.gira()
+    override fun girar() {
+        super.girar()
     }
 }

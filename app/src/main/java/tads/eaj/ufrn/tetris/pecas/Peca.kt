@@ -27,7 +27,7 @@ abstract class Peca(var x:Int, var y:Int){
         pt4.moveRight()
     }
 
-    open fun gira(){
+    open fun girar(){
     }
 
 }
