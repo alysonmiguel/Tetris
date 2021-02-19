@@ -14,7 +14,7 @@ import tads.eaj.ufrn.tetris.pecas.*
 import kotlin.random.Random
 
 class TabuleiroActivity : AppCompatActivity() {
-    val LINHA = 22
+    val LINHA = 40
     val COLUNA = 12
     var running = true
     var speed: Long = 300
@@ -22,7 +22,7 @@ class TabuleiroActivity : AppCompatActivity() {
 //    var random = Random
 
     //    var i = I(0, 15)
-    var peca  = gerarPeca(2)
+    var peca  = gerarPeca((0..3).random())
 
     var board = Array(LINHA) {
         Array(COLUNA) { 0 }
@@ -66,6 +66,9 @@ class TabuleiroActivity : AppCompatActivity() {
         }
 
         binding.girar.setOnClickListener{
+            if (peca.pt1.y >= COLUNA - 1 || peca.pt2.y >= COLUNA -1 || peca.pt3.y >= COLUNA -1 || peca.pt4.y >= COLUNA -1) {
+                return@setOnClickListener
+            }
             peca.gira()
         }
 
@@ -115,6 +118,7 @@ class TabuleiroActivity : AppCompatActivity() {
                         board[peca.pt4.x][peca.pt4.y] = 1
 
                         var p = (0..3).random()
+                        Toast.makeText(this, "${p}", Toast.LENGTH_SHORT).show()
 
                         peca = gerarPeca(p)
 
@@ -129,6 +133,8 @@ class TabuleiroActivity : AppCompatActivity() {
 //                        peca= O(0 ,15)
 
                         var p = (0..3).random()
+
+                        Toast.makeText(this, "${p}", Toast.LENGTH_SHORT).show()
 
                         peca = gerarPeca(p)
 

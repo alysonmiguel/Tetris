@@ -1,62 +1,81 @@
 package tads.eaj.ufrn.tetris.pecas
 
-class L(x: Int, y: Int) : Peca(x, y) {
+class L (x:Int, y:Int): Peca(x, y) {
 
-    override var pt1 = Ponto(x -1, y )
+    override var pt1 = Ponto(x+1 , y - 2 )
     override var pt2 = Ponto(x, y)
-    override var pt3 = Ponto(x , y - 1)
-    override var pt4 = Ponto(x , y -2)
+    override var pt3 = Ponto(x+1, y - 1)
+    override var pt4 = Ponto(x + 1, y)
 
-    //     2
-    // 1 3 4
+    override fun moveDown() {
+        pt1.moveDown()
+        pt2.moveDown()
+        pt3.moveDown()
+        pt4.moveDown()
+    }
+
+    override fun moveLeft() {
+        pt1.moveLeft()
+        pt2.moveLeft()
+        pt3.moveLeft()
+        pt4.moveLeft()
+    }
 
     private var quantidade:Int = 1     //  1
     override fun gira() {      //  3
         if (quantidade == 1){  //  2  4
-            pt1.x = pt2.x
-            pt1.y = pt2.y+1
+            pt1.x = pt3.x-1
+            pt1.y = pt3.y
 
-            pt3.x = pt2.x -1
-            pt3.y = pt2.y
+            pt2.x = pt3.x +1
+            pt2.y = pt3.y
 
-            pt4.x = pt2.x -2
-            pt4.y = pt2.y
+            pt4.x = pt3.x +1
+            pt4.y = pt3.y + 1
             quantidade++
 
         }else if (quantidade == 2){
-            pt1.x = pt2.x +1
-            pt1.y = pt2.y
+            pt1.x = pt3.x
+            pt1.y = pt3.y-1
 
-            pt3.x = pt2.x
-            pt3.y = pt2.y +2
+            pt2.x = pt3.x +1
+            pt2.y = pt3.y -1
 
-            pt4.x = pt2.x
-            pt4.y = pt2.y +1
-
+            pt4.x = pt3.x
+            pt4.y = pt3.y + 1
             quantidade++
 
         }else if (quantidade == 3){
-            pt1.x = pt2.x
-            pt1.y = pt2.y-1
+            pt1.x = pt3.x
+            pt1.y = pt3.y -1
 
-            pt3.x = pt2.x+1
-            pt3.y = pt2.y
+            pt2.x = pt3.x +1
+            pt2.y = pt3.y
 
-            pt4.x = pt2.x+2
-            pt4.y = pt2.y
+            pt4.x = pt3.x +2
+            pt4.y = pt3.y
 
             quantidade++
         }else{
-            pt1.x = pt2.x-1
-            pt1.y = pt2.y
+            pt1.x = pt3.x
+            pt1.y = pt3.y -1
 
-            pt3.x = pt2.x
-            pt3.y = pt2.y-1
+            pt2.x = pt3.x -1
+            pt2.y = pt3.y +1
 
-            pt4.x = pt2.x
-            pt4.y = pt2.y-2
+            pt4.x = pt3.x
+            pt4.y = pt3.y +1
             quantidade = 1
         }
 
     }
+
+
+
+
+
+
+
+
 }
+
