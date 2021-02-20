@@ -15,7 +15,7 @@ import tads.eaj.ufrn.tetris.pecas.*
 import kotlin.random.Random
 
 class TabuleiroActivity : AppCompatActivity() {
-    val LINHA = 26
+    val LINHA = 22
     val COLUNA = 12
     var running = true
     var speed: Long = 300
@@ -54,20 +54,20 @@ class TabuleiroActivity : AppCompatActivity() {
         }
 
         binding.left.setOnClickListener {
-            if (peca.pt1.y == 0 || peca.pt2.y == 0 || peca.pt3.y == 0 || peca.pt4.y == 0) {
+            if (peca.pt1.y == 1 || peca.pt2.y == 1 || peca.pt3.y == 1 || peca.pt4.y == 1) {
                 return@setOnClickListener
             }
             peca.moveLeft()
         }
         binding.right.setOnClickListener {
-            if (peca.pt1.y >= COLUNA - 1 || peca.pt2.y >= COLUNA - 1 || peca.pt3.y >= COLUNA - 1 || peca.pt4.y >= COLUNA - 1) {
+            if (peca.pt1.y >= COLUNA - 2 || peca.pt2.y >= COLUNA - 2 || peca.pt3.y >= COLUNA - 2 || peca.pt4.y >= COLUNA - 2) {
                 return@setOnClickListener
             }
             peca.moveRight()
         }
 
         binding.girar.setOnClickListener {
-            if (peca.pt1.y >= COLUNA - 1 || peca.pt2.y >= COLUNA - 1 || peca.pt3.y >= COLUNA - 1 || peca.pt4.y >= COLUNA - 1) {
+            if (peca.pt1.y >= COLUNA - 2 || peca.pt2.y >= COLUNA - 2 || peca.pt3.y >= COLUNA - 2 || peca.pt4.y >= COLUNA - 2) {
                 return@setOnClickListener
             }
             peca.girar()
@@ -107,19 +107,19 @@ class TabuleiroActivity : AppCompatActivity() {
                             }
                             if (viewmodel.board[i][j] == 1) {
                                 boardView[i][j]!!.setImageResource(R.drawable.white)
+                            }else if (i == 0 || i == LINHA-1 || j == 0 || j == COLUNA -1) {
+                                boardView[i][j]!!.setImageResource(R.drawable.gray)
                             } else {
                                 boardView[i][j]!!.setImageResource(R.drawable.black)
                             }
                         }
                     }
                     //move peça atual
-                    if (peca.pt3.x == LINHA - 1 || peca.pt4.x == LINHA - 1 || peca.pt1.x == LINHA - 1 || peca.pt2.x == LINHA - 1) {
+                    if (peca.pt3.x == LINHA - 2 || peca.pt4.x == LINHA - 2 || peca.pt1.x == LINHA - 2 || peca.pt2.x == LINHA - 2) {
                         desenhar()
                         preencheArray()
 
                         var p = (0..3).random()
-                        Toast.makeText(this, "${p}", Toast.LENGTH_SHORT).show()
-
                         peca = gerarPeca(p)
 
                     } else if ( viewmodel.board[peca.pt1.x + 1][peca.pt1.y] == 1 ||
@@ -129,7 +129,6 @@ class TabuleiroActivity : AppCompatActivity() {
                     ) {
                         desenhar()
                         preencheArray()
-//                        peca= O(0 ,15)
                         var p = (0..3).random()
 
                         peca = gerarPeca(p)

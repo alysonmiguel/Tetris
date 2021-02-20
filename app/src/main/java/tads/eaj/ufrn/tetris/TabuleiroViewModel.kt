@@ -7,7 +7,7 @@ import tads.eaj.ufrn.tetris.pecas.*
 
 class TabuleiroViewModel : ViewModel() {
 
-    val LINHA = 26
+    val LINHA = 22
     val COLUNA = 12
 
     var board = Array(LINHA) {
