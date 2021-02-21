@@ -20,4 +20,66 @@ class L (x:Int, y:Int): Peca(x, y) {
         pt3.moveLeft()
         pt4.moveLeft()
     }
+<<<<<<< HEAD
 }
+=======
+
+    private var quantidade:Int = 1     //  1
+    override fun girar() {      //  3
+        if (quantidade == 1){  //  2  4
+            pt1.x = pt3.x-1
+            pt1.y = pt3.y
+
+            pt2.x = pt3.x +1
+            pt2.y = pt3.y
+
+            pt4.x = pt3.x +1
+            pt4.y = pt3.y + 1
+            quantidade++
+
+        }else if (quantidade == 2){
+            pt1.x = pt3.x
+            pt1.y = pt3.y-1
+
+            pt2.x = pt3.x +1
+            pt2.y = pt3.y -1
+
+            pt4.x = pt3.x
+            pt4.y = pt3.y + 1
+            quantidade++
+
+        }else if (quantidade == 3){
+            pt1.x = pt3.x
+            pt1.y = pt3.y -1
+
+            pt2.x = pt3.x +1
+            pt2.y = pt3.y
+
+            pt4.x = pt3.x +2
+            pt4.y = pt3.y
+
+            quantidade++
+        }else{
+            pt1.x = pt3.x
+            pt1.y = pt3.y -1
+
+            pt2.x = pt3.x -1
+            pt2.y = pt3.y +1
+
+            pt4.x = pt3.x
+            pt4.y = pt3.y +1
+            quantidade = 1
+        }
+
+    }
+
+
+
+
+
+
+
+
+}
+
+>>>>>>> girar
