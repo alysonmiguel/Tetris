@@ -3,4 +3,6 @@
     <string name="esquerda">Esquerda</string>
     <string name="direita">Direita</string>
     <string name="girar">Girar</string>
+    <string name="proxima">Próxima:</string>
+    <string name="continuar">Continuar</string>
 </resources>

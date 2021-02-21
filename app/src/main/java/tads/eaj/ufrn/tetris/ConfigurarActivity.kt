@@ -1,5 +1,6 @@
 package tads.eaj.ufrn.tetris
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
@@ -39,11 +40,13 @@ class ConfigurarActivity : AppCompatActivity() {
             }else{
                 editor.putInt("dificuldade", 3)
             }
-
-
             editor.apply()
 
+            var intent = Intent(this, MainActivity::class.java)
+            startActivity(intent);
         }
+
+
     }
 
 

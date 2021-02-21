@@ -10,6 +10,8 @@ class TabuleiroViewModel : ViewModel() {
     val LINHA = 22
     val COLUNA = 12
 
+    var pontos = 0
+
     var board = Array(LINHA) {
         Array(COLUNA) { 0 }
     }
