@@ -1,9 +1,6 @@
 package tads.eaj.ufrn.tetris
 
-<<<<<<< HEAD
-=======
 import android.app.Activity
->>>>>>> girar
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -26,19 +23,7 @@ class TabuleiroActivity : AppCompatActivity() {
     var speed: Long = 300
     val REQUEST_CODE = 1
 
-<<<<<<< HEAD
-    var random = Random
-
-
-    //    var i = I(0, 15)
-    var  o = gerarPeca(2)
-
-    var board = Array(LINHA) {
-        Array(COLUNA) { 0 }
-    }
-=======
     var peca = gerarPeca()
->>>>>>> girar
 
     var boardView = Array(LINHA) {
         arrayOfNulls<ImageView>(COLUNA)
@@ -68,11 +53,7 @@ class TabuleiroActivity : AppCompatActivity() {
                 400
             Toast.makeText(this, "Normal", Toast.LENGTH_SHORT).show()
         } else {
-<<<<<<< HEAD
-            speed = 20
-=======
             speed = 250
->>>>>>> girar
             Toast.makeText(this, "Dificil", Toast.LENGTH_SHORT).show()
         }
 
@@ -142,20 +123,11 @@ class TabuleiroActivity : AppCompatActivity() {
                     //limpa tela
                     for (i in 0 until LINHA) {
                         for (j in 0 until COLUNA) {
-<<<<<<< HEAD
-                            if(board[0][j] == 1){
-                                // olha amanha
-//                                var intent = Intent(applicationContext, R.layout.activity_game_over::class.java)
-//                                startActivity(intent)
-                            }
-                            if (board[i][j] == 1) {
-=======
                             if (viewmodel.board[0][j] == 1) {
 //                                var intent = Intent(applicationContext, R.layout.activity_game_over::class.java)
 //                                startActivity(intent)
                             }
                             if (viewmodel.board[i][j] == 1) {
->>>>>>> girar
                                 boardView[i][j]!!.setImageResource(R.drawable.white)
                             } else if (i == 0 || i == LINHA - 1 || j == 0 || j == COLUNA - 1) {
                                 boardView[i][j]!!.setImageResource(R.drawable.gray)
@@ -165,51 +137,10 @@ class TabuleiroActivity : AppCompatActivity() {
                         }
                     }
                     //move peça atual
-<<<<<<< HEAD
-                    if (o.pt3.x == LINHA - 1 || o.pt4.x == LINHA - 1 || o.pt1.x == LINHA - 1 || o.pt2.x == LINHA - 1 ) {
-                        boardView[o.pt1.x][o.pt1.y]!!.setImageResource(R.drawable.white)
-                        boardView[o.pt2.x][o.pt2.y]!!.setImageResource(R.drawable.white)
-                        boardView[o.pt3.x][o.pt3.y]!!.setImageResource(R.drawable.white)
-                        boardView[o.pt4.x][o.pt4.y]!!.setImageResource(R.drawable.white)
-
-                        board[o.pt1.x][o.pt1.y] = 1
-                        board[o.pt2.x][o.pt2.y] = 1
-                        board[o.pt3.x][o.pt3.y] = 1
-                        board[o.pt4.x][o.pt4.y] = 1
-
-                        var p = (0..3).random()
-
-                        o = gerarPeca(p)
-
-//                        i = I(0,15)
-
-//                        novapeca()
-                    } else if (board[o.pt1.x+1][o.pt1.y] == 1 || board[o.pt2.x+1][o.pt2.y] == 1 || board[o.pt3.x+1][o.pt3.y] == 1 || board[o.pt4.x+1][o.pt4.y] == 1) {
-
-                        boardView[o.pt1.x][o.pt1.y]!!.setImageResource(R.drawable.white)
-                        boardView[o.pt2.x][o.pt2.y]!!.setImageResource(R.drawable.white)
-                        boardView[o.pt3.x][o.pt3.y]!!.setImageResource(R.drawable.white)
-                        boardView[o.pt4.x][o.pt4.y]!!.setImageResource(R.drawable.white)
-
-                        board[o.pt1.x][o.pt1.y] = 1
-                        board[o.pt2.x][o.pt2.y] = 1
-                        board[o.pt3.x][o.pt3.y] = 1
-                        board[o.pt4.x][o.pt4.y] = 1
-//                        o = O(0 ,15)
-
-                        var p = (0..3).random()
-
-                        o = gerarPeca(p)
-
-                    }else{
-                        o.moveDown()
-                    }
-=======
                     if (peca.pt3.x == LINHA - 2 || peca.pt4.x == LINHA - 2 || peca.pt1.x == LINHA - 2 || peca.pt2.x == LINHA - 2) {
                         desenhar()
                         preencheArray()
                         peca = gerarPeca()
->>>>>>> girar
 
                     } else if (viewmodel.board[peca.pt1.x + 1][peca.pt1.y] == 1 ||
                         viewmodel.board[peca.pt2.x + 1][peca.pt2.y] == 1 ||
@@ -235,24 +166,6 @@ class TabuleiroActivity : AppCompatActivity() {
         }.start()
     }
 
-<<<<<<< HEAD
-
-    fun gerarPeca(novaPeca:Int): Peca {
-
-        if(novaPeca == 0){
-            return O(0 ,15)
-        }else if( novaPeca == 1){
-            return I (0 ,15)
-        }else if( novaPeca == 2){
-            return L(0 ,15)
-        }else if( novaPeca == 3){
-            return S(0 ,15)
-        }
-        return  L(0,15)
-
-    }
-
-=======
     fun pontuar() {
         var cont: Int = 0
         for (i in 0 until LINHA) {
@@ -341,6 +254,5 @@ class TabuleiroActivity : AppCompatActivity() {
     }
 
 
->>>>>>> girar
 }
 
