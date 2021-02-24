@@ -20,9 +20,6 @@ class L (x:Int, y:Int): Peca(x, y) {
         pt3.moveLeft()
         pt4.moveLeft()
     }
-<<<<<<< HEAD
-}
-=======
 
     private var quantidade:Int = 1     //  1
     override fun girar() {      //  3
@@ -82,4 +79,3 @@ class L (x:Int, y:Int): Peca(x, y) {
 
 }
 
->>>>>>> girar
