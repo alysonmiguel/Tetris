@@ -70,12 +70,5 @@ class L (x:Int, y:Int): Peca(x, y) {
 
     }
 
-
-
-
-
-
-
-
 }
 
