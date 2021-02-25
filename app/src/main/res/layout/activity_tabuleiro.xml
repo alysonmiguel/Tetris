@@ -40,10 +40,11 @@
                 android:text="@string/proxima"
                 android:textSize="24dp" />
 
-            <GridLayout
+            <ImageView
                 android:id="@+id/proximapeca"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                />
 
         </LinearLayout>
 
@@ -56,39 +57,53 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:orientation="horizontal">
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/left"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/esquerda">
+
+                </Button>
+
+                <Button
+                    android:id="@+id/girar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/girar">
+
+                </Button>
+
+                <Button
+                    android:id="@+id/right"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/direita">
+
+                </Button>
+
+                <Button
+                    android:id="@+id/pause"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="pause">
+
+                </Button>
+
+            </LinearLayout>
 
             <Button
-                android:id="@+id/left"
-                android:layout_width="match_parent"
+                android:id="@+id/descer"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/esquerda">
-
-            </Button>
-            <Button
-                android:id="@+id/girar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/girar">
-
-            </Button>
-            <Button
-                android:id="@+id/right"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/direita">
-
-            </Button>
-
-            <Button
-                android:id="@+id/pause"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="pause">
-
-            </Button>
-
-
+                android:text="Descer" />
 
         </LinearLayout>
 
