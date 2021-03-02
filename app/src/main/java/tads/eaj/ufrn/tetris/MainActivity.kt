@@ -31,10 +31,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent);
         }
 
-//        binding.gridboard.setOnClickListener {
-//            Toast.makeText(this, "Voltando", Toast.LENGTH_SHORT).show()
-//        }
-
         var param = intent.extras
         var num = param?.getInt("continuar")
 

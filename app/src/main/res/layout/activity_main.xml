@@ -18,7 +18,7 @@
             android:background="@android:color/transparent"
             android:fontFamily="sans-serif-condensed"
             android:text="Novo Jogo"
-            android:textSize="36sp">
+            android:textSize="36dp">
         </Button>
 
         <GridLayout
@@ -33,7 +33,7 @@
             android:background="@android:color/transparent"
             android:fontFamily="sans-serif-condensed"
             android:text="Configurar"
-            android:textSize="36sp">
+            android:textSize="36dp">
 
         </Button>
 

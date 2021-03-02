@@ -16,5 +16,4 @@ class TabuleiroViewModel : ViewModel() {
         Array(COLUNA) { 0 }
     }
 
-
 }

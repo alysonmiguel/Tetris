@@ -7,9 +7,9 @@ class L (x:Int, y:Int): Peca(x, y) {
     override var pt3 = Ponto(x+1, y - 1)
     override var pt4 = Ponto(x + 1, y)
 
-    private var quantidade:Int = 1     //  1
-    override fun girar() {      //  3
-        if (quantidade == 1){  //  2  4
+    private var quantidade:Int = 1
+    override fun girar() {
+        if (quantidade == 1){
             pt1.x = pt3.x-1
             pt1.y = pt3.y
 

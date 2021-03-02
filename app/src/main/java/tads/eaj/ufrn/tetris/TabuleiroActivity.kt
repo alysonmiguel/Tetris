@@ -79,6 +79,9 @@ class TabuleiroActivity : AppCompatActivity() {
             }
             peca.girar()
         }
+        binding.descer.setOnClickListener {
+            peca.moveDown()
+        }
 
         // o onPause é chamando automaticamente
         binding.pause.setOnClickListener {
@@ -90,7 +93,7 @@ class TabuleiroActivity : AppCompatActivity() {
 
         }
 
-        binding.descer.setOnClickListener{
+        binding.descer.setOnClickListener {
 
         }
 
@@ -125,9 +128,6 @@ class TabuleiroActivity : AppCompatActivity() {
                     //limpa tela
                     for (i in 0 until LINHA) {
                         for (j in 0 until COLUNA) {
-//                            if (viewmodel.board[0][j] == 1){
-//                                fim()
-//                            }else
                             if (viewmodel.board[i][j] == 1) {
                                 boardView[i][j]!!.setImageResource(R.drawable.white)
                             } else if (i == 0 || i == LINHA - 1 || j == 0 || j == COLUNA - 1) {
@@ -137,9 +137,6 @@ class TabuleiroActivity : AppCompatActivity() {
                             }
                         }
                     }
-                    //move peça atual
-
-
                     if (peca.pt3.x == LINHA - 2 || peca.pt4.x == LINHA - 2 || peca.pt1.x == LINHA - 2 || peca.pt2.x == LINHA - 2) {
                         desenhar()
                         preencheArray()
@@ -160,24 +157,14 @@ class TabuleiroActivity : AppCompatActivity() {
                     try {
                         desenhar()
                     } catch (e: ArrayIndexOutOfBoundsException) {
-                        //se a peça passou das bordas eu vou parar o jogo
-                        //Toast.makeText(applicationContext, "saiu", Toast.LENGTH_SHORT).show()
                         running = false
-
                     }
                 }
             }
         }.start()
     }
 
-//    fun fim() {
-//        var intent = Intent(this, R.layout.activity_game_over::class.java)
-//        startActivity(intent)
-//        finish()
-//    }
-
-
-    fun  vericarDificuldade(){
+    fun vericarDificuldade() {
 
         var settings = getSharedPreferences("prefs", MODE_PRIVATE)
         var dificuldade = settings.getInt("dificuldade", 2)
@@ -186,10 +173,10 @@ class TabuleiroActivity : AppCompatActivity() {
             speed = 500
             Toast.makeText(this, "Facil", Toast.LENGTH_SHORT).show()
         } else if (dificuldade == 2) {
-            400
+            speed = 400
             Toast.makeText(this, "Normal", Toast.LENGTH_SHORT).show()
         } else {
-            speed = 250
+            speed = 100
             Toast.makeText(this, "Dificil", Toast.LENGTH_SHORT).show()
         }
 
@@ -236,26 +223,25 @@ class TabuleiroActivity : AppCompatActivity() {
         viewmodel.board[peca.pt4.x][peca.pt4.y] = 1
 
         pontuar()
+        if (viewmodel.board[0].contains(1)){
+            var intent = Intent(this, GameOverActivity::class.java)
+            var pontuacao = viewmodel.pontos.toString()
+            var param = Bundle()
+            param.putString("pontos", pontuacao)
+            intent.putExtras(param)
+            startActivity(intent)
+            running = false
+            finish()
+        }
+
     }
 
     fun gerarPeca(): Peca {
         when ((0..3).random()) {
-            0 -> {
-//                binding.proximapeca.setImageResource (R.drawable.green)
-                return F(0, 8)
-            }
-            1 -> {
-//                binding.proximapeca.setImageResource (R.drawable.green)
-                return F(0, 8)
-            }
-            2 -> {
-//                binding.proximapeca.setImageResource (R.drawable.green)
-                return F(0, 8)
-            }
-            3 -> {
-//                binding.proximapeca.setImageResource (R.drawable.green)
-                return F(0, 8)
-            }
+            0 -> return F(0, 8)
+            1 -> return L(0, 8)
+            2 -> return N(0, 8)
+            3 -> return S(0, 8)
         }
         return S(0, 8)
     }
@@ -276,19 +262,6 @@ class TabuleiroActivity : AppCompatActivity() {
         running = false
 
     }
-
-    override fun onRestart() {
-        Log.i("AULA", "onRestart() invocado.")
-        super.onRestart()
-        running = true
-        gameRun()
-    }
-
-    override fun onStop() {
-        Log.i("AULA", "onStop() invocado.")
-        super.onStop()
-    }
-
 
 }
 

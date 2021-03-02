@@ -1,19 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".GameOverActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="241dp"
-        android:layout_marginEnd="45dp"
-        android:text="GAME OVER "
-        android:textSize="36sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/fundo"
+        android:gravity="center|top"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/gameOverTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="GAME OVER "
+            android:textColor="#FFEB3B"
+            android:textSize="36dp" />
+
+        <TextView
+            android:id="@+id/pontosTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Pontuação"
+            android:textColor="#FF9800"
+            android:textSize="36sp" />
+
+        <TextView
+            android:id="@+id/recordTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center"
+            android:text="Record"
+            android:textColor="#FF9800"
+            android:textSize="36sp" />
+
+        <GridLayout
+            android:id="@+id/gridboard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <TextView
+            android:id="@+id/tetrisTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="60dp"
+            android:fontFamily="sans-serif-black"
+            android:gravity="center"
+            android:text="TETRIS"
+            android:textColor="#DA0E0E"
+            android:textSize="70dp" />
+
+        <Button
+            android:id="@+id/novoJogoButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:background="@android:color/transparent"
+            android:text="Novo Jogo"
+            android:textColor="#FFEB3B"
+            android:textSize="36dp" />
+
+        <Button
+            android:id="@+id/sairButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:text="Sair"
+            android:textColor="#FFEB3B"
+            android:textSize="36dp" />
+    </LinearLayout>
+
+
+</layout>
